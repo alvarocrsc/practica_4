@@ -4,20 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Document</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/reset.css">
 </head>
 <body>
-    <table>
-        <tr>
-            <td>Producto</td>
-            <td>Cantidad</td>
-            <td>Unidad</td>
-            <td>Total</td>
-        </tr>
-        <tr>
-            <td>Cantidad</td>
-        </tr>
+    <header>
+        <div class="wrapper">
+            <div class="header__logo">
+                <a href="#" class="header__logo--link">agoodshop</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <table class="products__table">
+            <thead class="products__table--head">
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Unidad</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody class="products__table--body">
+                <!-- Tabla a rellenar en js -->
+            </tbody>
+        </table>
+
+        
        
-    </table>
+    </main>
+    
     <script src="script.js"></script>
 </body>
 </html>
