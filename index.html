@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Document</title>
+    <title>Práctica 4 - Álvaro Carrasco</title>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/reset.css">
 </head>
@@ -16,24 +16,59 @@
         </div>
     </header>
     <main>
-        <table class="products__table">
-            <thead class="products__table--head">
-                <tr>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Unidad</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody class="products__table--body">
-                <!-- Tabla a rellenar en js -->
-            </tbody>
-        </table>
-
-        
-       
+        <div class="wrapper products__wrapper">
+            <section class="products__section">
+                <table class="products__table">
+                    <thead class="products__table--head">
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Unidad</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody class="products__table--body">
+                        <td>
+                            <h3>IFone</h3>
+                            <p>Ref:</p>
+                        </td>
+                        <td>
+                            <button>-</button>
+                            <input type="number">
+                            <button>+</button>
+                        </td>
+                        <td>50€</td>
+                        <td>100€</td>
+                    
+                        <!-- Tabla a rellenar en js -->
+                    </tbody>
+                </table>
+            </section>
+            <section class="total__section">
+                <table class="total__summary">
+                    <thead>
+                        <tr>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody class="total__summary--body">
+                        <!-- Tabla a rellenar en js -->
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>TOTAL</td>
+                            <td class="total__summary--price">
+                                a
+                                <!-- Tabla a rellenar en js -->
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+        </div>
     </main>
     
+    <script src="carrito.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
