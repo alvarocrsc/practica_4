@@ -36,7 +36,7 @@ header {
 }
 
 td, th {
-    padding-left: 16px;
+    padding: 16px;
 }
 
 table {
@@ -58,9 +58,53 @@ table {
     border-bottom: var(--border);
 }
 
+.products__table--cantidad {
+    padding-left: 50px;
+}
+
+.products__table--body td{
+    padding: 16px;
+}
+
+.products__table--column {
+    
+}
+
+.products__table--quantity {
+    border: var(--border);
+    border-radius: 0.25rem;
+    text-align: center;
+    height: 40px;
+    width: 40px;
+}
+
+.btn {
+    background-color: transparent;
+    border: none;
+    padding: 16px;
+}
+
 .total__section {
     background-color: var(--box);
     border-radius: 0.25rem;
     padding: 1rem;
+    font-size: 0.85rem;
     flex-basis: 30%;
 }
+
+.total__summary--body {
+    border-bottom: var(--border);
+    padding: 16px;
+}
+
+.total__summary--foot {
+    width: 100%;
+}
+
+.total__summary--price {
+    font-weight: bold;
+}
+
+
+
+
