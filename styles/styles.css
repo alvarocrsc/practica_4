@@ -31,12 +31,16 @@ header {
 .header__logo--link {
     color: var(--font-color);
     text-decoration: none;
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     font-weight: bold;
 }
 
 td, th {
     padding: 16px;
+}
+
+h3 {
+    font-size: 1rem;
 }
 
 table {
@@ -46,8 +50,8 @@ table {
 }
 
 .products__section {
-    font-size: 0.85rem;
-    flex-basis: 70%;
+    font-size: 0.8rem;
+    width: 70%;
 }
 
 .products__table tr, th  {
@@ -56,6 +60,11 @@ table {
 
 .products__table--head {
     border-bottom: var(--border);
+    font-size: 0.8rem;
+}
+
+.products__table--head th {
+    font-weight: 500;
 }
 
 .products__table--cantidad {
@@ -66,8 +75,9 @@ table {
     padding: 16px;
 }
 
-.products__table--column {
-    
+.products__table--column p {
+    padding-top: 3px;
+    font-size: 0.6rem;
 }
 
 .products__table--quantity {
@@ -85,24 +95,55 @@ table {
 }
 
 .total__section {
+    width: 30%;
     background-color: var(--box);
     border-radius: 0.25rem;
-    padding: 1rem;
-    font-size: 0.85rem;
-    flex-basis: 30%;
-}
-
-.total__summary--body {
-    border-bottom: var(--border);
     padding: 16px;
+    font-size: 0.85rem;
+    flex-grow: 0; 
+    align-self: flex-start; 
 }
 
-.total__summary--foot {
-    width: 100%;
+.total__summary tfoot {
+    border-top: var(--border);
+}
+
+.total__summary--row {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.total__summary--price-cell {
+    text-align: right;
 }
 
 .total__summary--price {
     font-weight: bold;
+    text-align: right;
+}
+
+@media screen and (max-width: 768px) { 
+    .products__wrapper {
+        flex-direction: column;
+    }
+
+    .products__table--buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .products__table--cantidad {
+        padding-left: 0px;
+    }
+    
+    .products__section {
+        width: 100%;
+    }
+
+    .total__section {
+        width: 100%;
+    }
 }
 
 
