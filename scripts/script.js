@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <td class="products__table--column products__table--buttons">
                     <button class="btn products__restar" data-sku="${product.getSku()}" data-action="restar">-</button>
                     <input type="number" class="products__table--quantity" data-sku="${product.getSku()}" value="${product.getUnits()}" min="0">
-                    <button class="btn products__sumar data-sku="${product.getSku()}" data-action="sumar"">+</button>
+                    <button class="btn products__sumar" data-sku="${product.getSku()}" data-action="sumar">+</button>
                 </td>
                 <td class="products__table--column">
                     ${product.getPrice()}${currency}
@@ -37,44 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 `
 
                 tbody.append(fila)
-
-                const cantidad = fila.querySelector(".products__table--quantity")
-                const botonMenos = fila.querySelector(".products__restar")
-                const botonMas = fila.querySelector(".products__sumar")
-
-                botonMenos.addEventListener("click", () => {
-                    carrito.restarUnidades(product.getSku())
-                    actualizarCantidad()
-                    pintarTotal(carrito)
-                })
-    
-                botonMas.addEventListener("click", () => {
-                    carrito.sumarUnidades(product.getSku())
-                    actualizarCantidad()
-                    pintarTotal(carrito)
-                })
-
-                const actualizarTotal = () => {
-                    const total = fila.querySelector('.products__table--total')
-                    total.textContent = carrito.obtenerTotal(product).toFixed(2) + currency
-                }
-
-                const actualizarCantidad = () => {
-                    cantidad.value = product.getUnits()
-                    actualizarTotal()
-                }
-                
-                cantidad.addEventListener("input", (event) => {
-                    const cantidadNueva = event.target.value
-
-                    if (cantidadNueva === "") {
-                        product.setUnits(0)
-                    } else if (cantidadNueva >= 0) {
-                        product.setUnits(cantidadNueva)
-                    }
-                    actualizarTotal()
-                    pintarTotal(carrito)
-                })
             })
         }
 
@@ -96,10 +58,41 @@ document.addEventListener("DOMContentLoaded", () => {
                     fila.classList.add("total__summary--row")
                     tbody.append(fila)
                 }
-
-                const total = document.querySelector(".total__summary--price")
-                total.textContent = carrito.obtenerTotalFinal().toFixed(2) + currency
             })
+            
+            const total = document.querySelector(".total__summary--price")
+            total.textContent = carrito.obtenerTotalFinal().toFixed(2) + currency
+        }
+
+        document.querySelector('.products__table--body').addEventListener('click', (event) => {
+            const sku = event.target.dataset.sku
+            const action = event.target.dataset.action
+
+            if (sku && action) {
+                if (action === "sumar") {
+                    carrito.sumarUnidades(sku)
+                } else if (action === "restar") {
+                    carrito.restarUnidades(sku)
+                }
+                actualizarVista()
+            }
+        })
+
+        document.querySelector('.products__table--body').addEventListener('input', (event) => {
+            if (event.target.classList.contains("products__table--quantity")) {
+                const sku = event.target.dataset.sku
+                const cantidadNueva = parseInt(event.target.value, 10)
+
+                if (!isNaN(cantidadNueva) && cantidadNueva >= 0) {
+                    carrito.actualizarUnidades(sku, cantidadNueva)
+                    actualizarVista()
+                }
+            }
+        })
+
+        const actualizarVista = () => {
+            pintarTabla(carrito)
+            pintarTotal(carrito)
         }
 
         pintarTabla(carrito)
